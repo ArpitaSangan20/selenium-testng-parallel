@@ -1,0 +1,27 @@
+name: Run Selenium Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ selenium-testng-parallel ]
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Build and Run Tests
+        run: mvn clean test

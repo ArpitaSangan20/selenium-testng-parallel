@@ -1,5 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.*;
 
 public class ParallelTest {
@@ -8,6 +9,7 @@ public class ParallelTest {
 
     @BeforeMethod
     public void setup() {
+        WebDriverManager.chromedriver().setup();
         driver.set(new ChromeDriver());
     }
 
